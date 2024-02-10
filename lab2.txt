@@ -1,0 +1,71 @@
+import math
+
+class Shape:
+    def area(self):
+        pass
+
+    def perimeter(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius**2
+
+    def perimeter(self):
+        return 2 * math.pi * self.radius
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+class Triangle(Shape):
+    def __init__(self, side1, side2, side3):
+        self.side1 = side1
+        self.side2 = side2
+        self.side3 = side3
+
+    def area(self):
+        s = (self.side1 + self.side2 + self.side3) / 2
+        return math.sqrt(s * (s - self.side1) * (s - self.side2) * (s - self.side3))
+
+    def perimeter(self):
+        return self.side1 + self.side2 + self.side3
+
+
+print("Выберите тип фигуры:")
+print("1. Круг")
+print("2. Прямоугольник")
+print("3. Треугольник")
+
+choice = input("Введите номер выбранной фигуры: ")
+
+if choice == "1":
+    radius = float(input("Введите радиус круга: "))
+    circle = Circle(radius)
+    print("Площадь круга:", circle.area())
+    print("Периметр круга:", circle.perimeter())
+elif choice == "2":
+    width = float(input("Введите ширину прямоугольника: "))
+    height = float(input("Введите высоту прямоугольника: "))
+    rectangle = Rectangle(width, height)
+    print("Площадь прямоугольника:", rectangle.area())
+    print("Периметр прямоугольника:", rectangle.perimeter())
+elif choice == "3":
+    side1 = float(input("Введите длину первой стороны треугольника: "))
+    side2 = float(input("Введите длину второй стороны треугольника: "))
+    side3 = float(input("Введите длину третьей стороны треугольника: "))
+    triangle = Triangle(side1, side2, side3)
+    print("Площадь треугольника:", triangle.area())
+    print("Периметр треугольника:", triangle.perimeter())
+else:
+    print("Неверный выбор.")
